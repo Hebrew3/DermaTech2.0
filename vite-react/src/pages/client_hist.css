@@ -1,0 +1,84 @@
+.history-container {
+    background-color: #fff;
+    padding: 1.5rem;
+    font-family: sans-serif;
+  }
+  
+  .client-info-row {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .client-info-box {
+    background-color: #f0f0f0;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  
+  .filter-row {
+    margin-bottom: 1rem;
+  }
+  
+  .filter-row label {
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  
+  .table-wrapper {
+    background-color: #ffe5e5;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .history-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .history-table th,
+  .history-table td {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .history-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    padding: 0.2rem;
+  }
+  
+  .pagination {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .page-btn {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .page-btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+  
+  .page-number {
+    font-weight: bold;
+  }
+  
