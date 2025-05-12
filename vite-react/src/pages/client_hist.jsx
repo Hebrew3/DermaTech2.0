@@ -9,7 +9,7 @@ const treatments = [
   { treatment: "Acne Facial", aesthetician: "Jessie", date: "12/12/2022" }
 ];
 
-export default function ClientHistory() {
+export default function Client_hist() {
   return (
     <div className="history-container">
       <h2>Client History</h2>

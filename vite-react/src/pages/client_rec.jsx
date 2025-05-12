@@ -13,7 +13,7 @@ const clients = [
   { id: "C8", lastName: "Aclan", firstName: "John", age: 29, contact: "09876543212", gender: "Male", date: "12/12/2022" }
 ];
 
-export default function ClientRecordsTable() {
+export default function Client_rec() {
   return (
     <div className="container">
        <div className="table-wrapper">

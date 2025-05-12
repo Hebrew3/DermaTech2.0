@@ -1,7 +1,9 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import Navbar from './components/Navbar.jsx'
-import Client_rec from './pages/client_rec.jsx'
-import Client_hist from './pages/client_hist.jsx'
+import Navbar from './components/Navbar'
+
+import Client_rec from './pages/client_rec'
+import Client_hist from './pages/client_hist'
+
 function App() {
 
     return (

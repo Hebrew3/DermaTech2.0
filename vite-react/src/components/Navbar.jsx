@@ -11,10 +11,10 @@ import {
 } from "lucide-react";
 import "./Navbar.css";
 
-export default function Sidebar() {
+export default function Navbar() {
   return (
     <div className="sidebar">
-      <img src="/kdermalogo.png" alt="Derma Logo" className="logo" />
+      <img src="src/kdermalogo.png" alt="Derma Logo" className="logo" />
       <nav className="nav-menu">
         <Link to="/dashboard" className="nav-item">
           <Home className="icon" />
