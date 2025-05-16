@@ -1,5 +1,6 @@
 import React from "react";
 import { Pencil, Eye, Trash2, Plus } from "lucide-react";
+import { Link } from "react-router-dom";
 import "./client_rec.css";
 
 const clients = [
@@ -15,8 +16,9 @@ const clients = [
 
 export default function Client_rec() {
   return (
-    <div className="container">
-       <div className="table-wrapper">
+    <main className="page-layout">
+      <div className="container">
+        <div className="table-wrapper">
           <div className="table-controls">
             <div className="title-row">
               <h2 className="title-with-icon">
@@ -26,7 +28,7 @@ export default function Client_rec() {
                 </button>
               </h2>
             </div>
-        
+
             <div className="filter-row">
               <div className="show-entries">
                 <label>
@@ -48,48 +50,49 @@ export default function Client_rec() {
               </div>
             </div>
           </div>
-        
-      
 
-      
-        <table>
-          <thead>
-            <tr>
-              <th>Client ID</th>
-              <th>Last Name</th>
-              <th>First Name</th>
-              <th>Age</th>
-              <th>Contact No.</th>
-              <th>Gender</th>
-              <th>Date Added</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {clients.map((client) => (
-              <tr key={client.id}>
-                <td>{client.id}</td>
-                <td>{client.lastName}</td>
-                <td>{client.firstName}</td>
-                <td>{client.age}</td>
-                <td>{client.contact}</td>
-                <td>{client.gender}</td>
-                <td>{client.date}</td>
-                <td>
-                  <button className="icon-btn"><Pencil size={16} /></button>
-                  <button className="icon-btn"><Eye size={16} /></button>
-                  <button className="icon-btn"><Trash2 size={16} /></button>
-                </td>
+          <table>
+            <thead>
+              <tr>
+                <th>Client ID</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Age</th>
+                <th>Contact No.</th>
+                <th>Gender</th>
+                <th>Date Added</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="pagination">
-          <button className="page-btn">Previous</button>
-          <span className="page-number">1</span>
-          <button className="page-btn">Next</button>
+            </thead>
+            <tbody>
+              {clients.map((client) => (
+                <tr key={client.id}>
+                  <td>{client.id}</td>
+                  <td>{client.lastName}</td>
+                  <td>{client.firstName}</td>
+                  <td>{client.age}</td>
+                  <td>{client.contact}</td>
+                  <td>{client.gender}</td>
+                  <td>{client.date}</td>
+                  <td>
+                    <button className="icon-btn"><Pencil size={16} /></button>
+                    <Link to={`/client_hist/${client.id}`}>
+                      <button className="icon-btn"><Eye size={16} /></button>
+                    </Link>
+                    <button className="icon-btn"><Trash2 size={16} /></button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="pagination">
+            <button className="page-btn">Previous</button>
+            <span className="page-number">1</span>
+            <button className="page-btn">Next</button>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
