@@ -1,3 +1,14 @@
+.main-container {
+  background-color: #fce4ec;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-size: 100px;
+  width: 205%;
+  height: 100%;
+  
+  
+}
+
 .history-container {
     background-color: #fff;
     padding: 1.5rem;
@@ -28,11 +39,6 @@
     gap: 0.4rem;
   }
   
-  .table-wrapper {
-    background-color: #ffe5e5;
-    padding: 1rem;
-    border-radius: 8px;
-  }
   
   .history-table {
     width: 100%;
@@ -41,13 +47,13 @@
   
   .history-table th,
   .history-table td {
-    text-align: left;
+    text-align: center;
     padding: 0.75rem;
     border-bottom: 1px solid #ccc;
   }
   
   .history-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #fae0e0;
   }
   
   .icon-btn {
@@ -58,27 +64,32 @@
     padding: 0.2rem;
   }
   
-  .pagination {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .page-btn {
-    background-color: #e0e0e0;
-    border: none;
-    padding: 0.4rem 0.75rem;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .page-btn:disabled {
-    opacity: 0.6;
-    cursor: default;
-  }
-  
-  .page-number {
-    font-weight: bold;
-  }
+.pagination {
+  font-family: Arial, sans-serif;
+}
+
+
+.pagination-button {
+  padding: 8px 8px;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #f59faf;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin:0px;
+}
+
+.pagination-button:hover {
+  background-color: #fce4ec;
+  border-color: rgb(69, 69, 69) ;
+  color: rgb(69, 69, 69);
+}
+
+.pagination-current {
+  padding: 5px 8px;
+  background-color: #f59faf;
+  color: white;
+ 
+}
   

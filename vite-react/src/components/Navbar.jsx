@@ -24,25 +24,21 @@ export default function Navbar() {
           <ClipboardList className="icon" />
           <span>Client Records Table</span>
         </Link>
-        <Link to="/schedule" className="nav-item">
-          <CalendarDays className="icon" />
-          <span>Schedule</span>
-        </Link>
         <Link to="/appointments" className="nav-item">
           <FileText className="icon" />
           <span>Appointment Details</span>
+        </Link>
+        <Link to="/schedule" className="nav-item">
+          <CalendarDays className="icon" />
+          <span>Schedule</span>
         </Link>
         <Link to="/inventory" className="nav-item">
           <File className="icon" />
           <span>Inventory</span>
         </Link>
-        <Link to="/treatments" className="nav-item">
-          <Users className="icon" />
-          <span>Trend Treatments</span>
-        </Link>
-        <Link to="/forecasting" className="nav-item">
+        <Link to="/analytics" className="nav-item">
           <LineChart className="icon" />
-          <span>Forecasting</span>
+          <span>Analytics</span>
         </Link>
       </nav>
     </div>
