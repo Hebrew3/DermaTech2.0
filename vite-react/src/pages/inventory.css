@@ -1,102 +1,197 @@
-.page-layout {
-  margin-left: 220px;
-  padding: 1.5rem;
-  background-color: #fff0f3;
-  min-height: 100vh;
+/* === Reset & Container === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-  background-color: #ffffff;
-  padding: 1.5rem;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  color: #222;
+}
+
+.dashboard-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-left: 300px;
+}
+
+/* === Top Cards Row === */
+.dashboard-header {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #ffe3e3;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  flex: 1;
+  min-width: 220px;
 }
 
-.table-wrapper {
-  width: 100%;
-}
-
-.title-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.title-with-icon {
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.add-btn-icon {
-  background-color: #fecdd3;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.filter-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.show-entries select {
-  margin: 0 0.5rem;
-  padding: 0.2rem;
-}
-
-.search-box input {
-  padding: 0.3rem;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-
-thead {
-  background-color: #ffe4e6;
-}
-
-th,
-td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #eee;
-  text-align: left;
-}
-
-.icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-right: 6px;
+.card p {
   color: #333;
+  font-size: 0.95rem;
 }
 
-.icon-btn:hover {
-  color: #000;
+.card h3 {
+  font-size: 2rem;
+  color: #b71c1c;
+  margin: 0.5rem 0;
 }
 
-.pagination {
-  margin-top: 1rem;
+.card span {
+  font-size: 0.85rem;
+  color: #444;
+}
+
+/* === Search and Add Row (Left + Right Aligned) === */
+.search-add {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.page-btn {
-  background-color: #ffe4e6;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
+.search-add input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  width: 250px;
+  background-color: #fff;
+  color: #222;
 }
 
-.page-number {
-  font-weight: bold;
+.search-add input::placeholder {
+  color: #999;
+}
+
+.search-add .btn {
+  background-color: #f28b8b;
+  color: #000;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-add .btn:hover {
+  background-color: #e07272;
+}
+
+/* === Table Section === */
+.table-container {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.table-container h2 {
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container thead {
+  background-color: #fbc4c4;
+  color: #111;
+}
+
+.table-container th,
+.table-container td {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.no-items {
+  text-align: center;
+  color: #555;
+  padding: 2rem 0;
+}
+
+/* === Status Styling === */
+.status-in {
+  color: #1b5e20;
+  font-weight: 500;
+}
+
+.status-low {
+  color: #e65100;
+  font-weight: 500;
+}
+
+.status-out {
+  color: #b71c1c;
+  font-weight: 500;
+}
+
+/* === Action Buttons === */
+.action {
+  padding: 0.4rem 0.6rem;
+  margin-right: 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+}
+
+.action.view {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.action.edit {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.action.delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* === Pagination === */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  color: #222;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  background-color: #f28b8b;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 0.95rem;
 }

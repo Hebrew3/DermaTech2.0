@@ -1,87 +1,166 @@
-import React from "react";
-import { Pencil, Trash2, Plus } from "lucide-react";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 import "./inventory.css";
 
-const inventoryItems = [
-  { id: "I1", name: "Facial Cleanser", quantity: 25, unit: "bottles", date: "01/05/2024" },
-  { id: "I2", name: "Sunscreen SPF50", quantity: 8, unit: "tubes", date: "02/05/2024" },
-  { id: "I3", name: "Acne Serum", quantity: 15, unit: "bottles", date: "03/05/2024" },
-  { id: "I4", name: "Moisturizer", quantity: 5, unit: "jars", date: "04/05/2024" },
-  { id: "I5", name: "Dermapen Needles", quantity: 50, unit: "pcs", date: "05/05/2024" }
-];
+const Inventory = () => {
+  const [items, setItems] = useState([
+    { id: 1, name: "Hyaluronic Acid Serum", quantity: 20, price: 10 },
+    { id: 2, name: "Peptide Firming Serum", quantity: 15, price: 12 },
+    { id: 3, name: "Vitamin C Face Cream", quantity: 10, price: 8 },
+    { id: 4, name: "Gentle Cleansing Gel", quantity: 8, price: 15 },
+    { id: 5, name: "SPF 50 Daily Protection", quantity: 25, price: 5 },
+    { id: 6, name: "Niacinamide Serum", quantity: 18, price: 7 },
+  ]);
 
-export default function Inventory() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const filteredItems = items.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+  const paginatedItems = filteredItems.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const showSuccess = (msg) => {
+    Swal.fire({
+      icon: "success",
+      title: "Success",
+      text: msg,
+      timer: 2000,
+      showConfirmButton: false,
+      timerProgressBar: true,
+      position: "center",
+      toast: false,
+    });
+  };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setItems(items.filter((item) => item.id !== id));
+        showSuccess("Item has been deleted.");
+        const newTotalPages = Math.ceil((items.length - 1) / itemsPerPage);
+        if (currentPage > newTotalPages) setCurrentPage(newTotalPages);
+      }
+    });
+  };
+
+  const getStatus = (qty) => {
+    if (qty === 0) return { label: "Out of stock", className: "status-out" };
+    if (qty < 5) return { label: "Low stock", className: "status-low" };
+    return { label: "In-stock", className: "status-in" };
+  };
+
   return (
-    <main className="page-layout">
-      <div className="container">
-        <div className="table-wrapper">
-          <div className="table-controls">
-            <div className="title-row">
-              <h2 className="title-with-icon">
-                Inventory Table
-                <button className="add-btn-icon" title="Add Inventory Item">
-                  <Plus size={20} />
-                </button>
-              </h2>
-            </div>
-
-            <div className="filter-row">
-              <div className="show-entries">
-                <label>
-                  Show
-                  <select>
-                    <option>10</option>
-                    <option>25</option>
-                    <option>50</option>
-                    <option>100</option>
-                  </select>
-                  entries
-                </label>
-              </div>
-              <div className="search-box">
-                <label>
-                  Search:
-                  <input type="text" placeholder="Search items..." />
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <table>
-            <thead>
-              <tr>
-                <th>Item ID</th>
-                <th>Item Name</th>
-                <th>Quantity</th>
-                <th>Unit</th>
-                <th>Date Added</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {inventoryItems.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.name}</td>
-                  <td>{item.quantity}</td>
-                  <td>{item.unit}</td>
-                  <td>{item.date}</td>
-                  <td>
-                    <button className="icon-btn"><Pencil size={16} /></button>
-                    <button className="icon-btn"><Trash2 size={16} /></button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          <div className="pagination">
-            <button className="page-btn">Previous</button>
-            <span className="page-number">1</span>
-            <button className="page-btn">Next</button>
-          </div>
+    <div className="dashboard-container">
+      <h2>Inventory Management</h2>
+      <div className="dashboard-header">
+        <div className="card">
+          <p>Products</p>
+          <h3>14</h3>
+        </div>
+        <div className="card">
+          <p>Total Stocks</p>
+          <h3>74</h3>
+        </div>
+        <div className="card">
+          <p>Low Stock</p>
+          <h3>5</h3>
+        </div>
+        <div className="card">
+          <p>Used Stock</p>
+          <h3>5</h3>
         </div>
       </div>
-    </main>
+
+      <div className="search-add">
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setCurrentPage(1);
+          }}
+        />
+        <div>
+          <button className="btn">Add New Product</button>
+        </div>
+      </div>
+
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paginatedItems.length > 0 ? (
+              paginatedItems.map((item) => {
+                const status = getStatus(item.quantity);
+                return (
+                  <tr key={item.id}>
+                    <td>{item.name}</td>
+                    <td>{item.quantity}</td>
+                    <td>${item.price.toFixed(2)}</td>
+                    <td className={status.className}>{status.label}</td>
+                    <td>
+                      <button className="action view">🔍</button>
+                      <button className="action edit">✏️</button>
+                      <button
+                        className="action delete"
+                        onClick={() => handleDelete(item.id)}
+                      >
+                        🗑️
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td colSpan="5" className="no-items">No items found.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+        <div className="pagination">
+          <button
+            onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span>
+            Page {totalPages === 0 ? 0 : currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+            disabled={currentPage === totalPages || totalPages === 0}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default Inventory;
