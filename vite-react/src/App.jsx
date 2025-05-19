@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Client_rec from "./pages/client_rec";
 import Client_hist from "./pages/client_hist";
 import Inventory from "./pages/inventory";
+import Appointment from "./pages/appoinment";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/client_rec" element={<Client_rec />} />
             <Route path="/client_hist" element={<Client_hist />} />
             <Route path="/inventory" element={<Inventory />} />
+            <Route path="/appointment" element={<Appointment />} /> 
           </Routes>
         </div>
       </div>

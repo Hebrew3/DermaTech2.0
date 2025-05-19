@@ -1,0 +1,151 @@
+.main-container {
+  background-color: #fce4ec;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  max-width: 1221px;
+  margin: 0 auto; /* Centered instead of offset */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.appointment-container {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 80%;
+  max-width: 1000px;  /* limit the max width */
+  margin: 0 auto;      /* center it */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.appointment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.appointment-header h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.add-btn {
+  background-color: #f59faf;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #e1909f;
+}
+
+.appointment-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.entries-control label,
+.search-control label {
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+select,
+input[type="text"] {
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.3rem;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+/* Table Styles */
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.appointment-table th,
+.appointment-table td {
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.appointment-table th {
+  background-color: #fce4ec;
+  font-weight: bold;
+}
+
+.appointment-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Action Icons */
+.action-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.action-icons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.2s ease;
+}
+
+.action-icons button:hover {
+  transform: scale(1.1);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.pagination-button {
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #f59faf;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-button:hover {
+  background-color: #fce4ec;
+  border-color: #aaa;
+  color: #444;
+}
+
+.pagination-current {
+  padding: 8px 14px;
+  background-color: #f59faf;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+}

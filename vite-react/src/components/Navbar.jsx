@@ -24,7 +24,7 @@ export default function Navbar() {
           <ClipboardList className="icon" />
           <span>Client Records Table</span>
         </Link>
-        <Link to="/appointments" className="nav-item">
+        <Link to="/appointment" className="nav-item">
           <FileText className="icon" />
           <span>Appointment Details</span>
         </Link>
