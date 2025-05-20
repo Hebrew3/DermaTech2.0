@@ -121,14 +121,41 @@ const Inventory = () => {
                     <td>{item.quantity}</td>
                     <td>${item.price.toFixed(2)}</td>
                     <td className={status.className}>{status.label}</td>
-                    <td>
-                      <button className="action view">🔍</button>
-                      <button className="action edit">✏️</button>
+                    <td className="action-icons">
+                      
+                      <button className="icon-btn" title="Edit">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M11 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"
+                          />
+                        </svg>
+                      </button>
                       <button
-                        className="action delete"
+                        className="icon-btn"
+                        title="Delete"
                         onClick={() => handleDelete(item.id)}
                       >
-                        🗑️
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 7L5 7M10 11v6m4-6v6M6 7l1 12a2 2 0 002 2h6a2 2 0 002-2l1-12"
+                          />
+                        </svg>
                       </button>
                     </td>
                   </tr>
@@ -136,7 +163,9 @@ const Inventory = () => {
               })
             ) : (
               <tr>
-                <td colSpan="5" className="no-items">No items found.</td>
+                <td colSpan="5" className="no-items">
+                  No items found.
+                </td>
               </tr>
             )}
           </tbody>
