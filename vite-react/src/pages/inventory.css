@@ -16,7 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-left: 200px;
+  margin-left: 100px;
   width: 100%;
 }
 
@@ -53,7 +53,7 @@ body {
   color: #444;
 }
 
-/* === Search and Add Row (Left + Right Aligned) === */
+/* === Search and Add Row === */
 .search-add {
   display: flex;
   justify-content: space-between;
@@ -95,6 +95,7 @@ body {
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
 }
 
 .table-container h2 {
@@ -105,6 +106,7 @@ body {
 .table-container table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 700px;
 }
 
 .table-container thead {
@@ -114,7 +116,7 @@ body {
 
 .table-container th,
 .table-container td {
-  text-align: left;
+  text-align: center;
   padding: 1rem;
   border-bottom: 1px solid #eee;
   font-size: 0.95rem;
@@ -142,30 +144,41 @@ body {
   font-weight: 500;
 }
 
-/* === Action Buttons === */
-.action {
-  padding: 0.4rem 0.6rem;
-  margin-right: 5px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-size: 1rem;
+/* === Action Icon Styling === */
+.action-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.action.view {
-  background-color: #6c757d;
-  color: #fff;
-}
-
-.action.edit {
-  background-color: #ffc107;
+.action-icons svg {
+  width: 20px;
+  height: 20px;
   color: #000;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.action.delete {
-  background-color: #dc3545;
-  color: #fff;
+.action-icons svg:hover {
+  color: #e53935;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 0.4rem;
+  cursor: pointer;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.icon-btn:hover {
+  background-color: #f8d7da;
+  border-radius: 6px;
 }
 
 /* === Pagination === */
@@ -197,7 +210,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* === Responsive: Tablets and Below === */
+/* === Responsive: Laptops and Tablets === */
 @media (max-width: 1024px) {
   .dashboard-container {
     margin-left: 0;
@@ -206,6 +219,10 @@ body {
 
   .dashboard-header {
     flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
   }
 
   .search-add {
@@ -223,28 +240,36 @@ body {
   }
 }
 
-/* === Responsive: Mobile === */
+/* === Responsive: Tablets and Small Laptops === */
+@media (max-width: 992px) {
+  .dashboard-header {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+/* === Responsive: Mobile Phones === */
 @media (max-width: 600px) {
   .card {
     padding: 1rem;
   }
 
   .card h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .card p,
   .card span {
+    font-size: 0.8rem;
+  }
+
+  .table-container th,
+  .table-container td {
+    padding: 0.75rem;
     font-size: 0.85rem;
-  }
-
-  .table-container {
-    padding: 1rem;
-    overflow-x: auto;
-  }
-
-  .table-container table {
-    min-width: 600px;
   }
 
   .pagination {
@@ -254,5 +279,9 @@ body {
 
   .pagination button {
     width: 100%;
+  }
+
+  .search-add {
+    gap: 0.75rem;
   }
 }
