@@ -34,3 +34,7 @@
   color:rgb(60, 60, 60);
   user-select: auto;
 }
+
+.spacer {
+  margin-top:80px; 
+}

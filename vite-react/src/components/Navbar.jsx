@@ -6,8 +6,9 @@ import {
   CalendarDays,
   FileText,
   File,
-  Users,
-  LineChart
+  LineChart,
+  LogOut
+  
 } from "lucide-react";
 import "./Navbar.css";
 
@@ -40,6 +41,14 @@ export default function Navbar() {
           <LineChart className="icon" />
           <span>Analytics</span>
         </Link>
+
+            <div className="spacer" /> {}
+
+        <Link to="/login" className="nav-item logout">
+          <LogOut className="icon" />
+          <span>Logout</span>
+        </Link>
+        
       </nav>
     </div>
   );
