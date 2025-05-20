@@ -14,7 +14,7 @@ function App() {
         <div style={{ flex: 1, marginLeft: "220px", padding: "1rem" }}>
           <Routes>
             <Route path="/client_rec" element={<Client_rec />} />
-            <Route path="/client_hist" element={<Client_hist />} />
+            <Route path="/client_hist/:id" element={<Client_hist />} />
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/appointment" element={<Appointment />} /> 
           </Routes>
