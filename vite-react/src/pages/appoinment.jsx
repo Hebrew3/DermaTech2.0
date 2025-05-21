@@ -24,8 +24,12 @@ export default function Appointment() {
   const [searchTerm, setSearchTerm] = useState("");
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [editData, setEditData] = useState({});
+  const [newData, setNewData] = useState({ clientName: "", treatment: "", date: "", aesthetician: "" });
+
+  const today = new Date().toISOString().split("T")[0];
 
   const filteredAppointments = useMemo(() => {
     return appointmentData.filter((a) =>
@@ -71,12 +75,27 @@ export default function Appointment() {
     setDeleteModalOpen(false);
   };
 
+  const handleAddChange = (e) => {
+    const { name, value } = e.target;
+    setNewData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleAddSave = (e) => {
+    e.preventDefault();
+    const newId = `A${appointmentData.length + 1}`;
+    setAppointmentData(prev => [...prev, { id: newId, ...newData }]);
+    setNewData({ clientName: "", treatment: "", date: "", aesthetician: "" });
+    setAddModalOpen(false);
+  };
+
   return (
     <div className="appointment-page">
       <div className="appointment-container">
         <div className="appointment-header">
           <h2>Appointments</h2>
-          <button className="add-btn" title="Add Appointment"><Plus size={16} /></button>
+          <button className="add-btn" title="Add Appointment" onClick={() => setAddModalOpen(true)}>
+            <Plus size={16} />
+          </button>
         </div>
 
         <hr />
@@ -115,7 +134,6 @@ export default function Appointment() {
           </div>
         </div>
 
-        {/* TABLE WRAPPER FOR RESPONSIVE SCROLL */}
         <div className="table-wrapper">
           <table className="appointment-table">
             <thead>
@@ -170,6 +188,7 @@ export default function Appointment() {
         </div>
       </div>
 
+      {/* Edit Modal */}
       {editModalOpen && (
         <div className="modal-backdrop">
           <div className="modal">
@@ -194,6 +213,7 @@ export default function Appointment() {
                 name="date"
                 value={editData.date}
                 onChange={handleEditChange}
+                min={today}
               />
               <input
                 type="text"
@@ -211,6 +231,7 @@ export default function Appointment() {
         </div>
       )}
 
+      {/* Delete Modal */}
       {deleteModalOpen && (
         <div className="modal-backdrop">
           <div className="modal">
@@ -220,6 +241,53 @@ export default function Appointment() {
               <button type="button" onClick={() => setDeleteModalOpen(false)}>Cancel</button>
               <button type="button" onClick={handleDeleteConfirm}>Delete</button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add Modal */}
+      {addModalOpen && (
+        <div className="modal-backdrop">
+          <div className="modal">
+            <h3>Add Appointment</h3>
+            <form className="modal-form" onSubmit={handleAddSave}>
+              <input
+                type="text"
+                name="clientName"
+                value={newData.clientName}
+                onChange={handleAddChange}
+                placeholder="Client Name"
+                required
+              />
+              <input
+                type="text"
+                name="treatment"
+                value={newData.treatment}
+                onChange={handleAddChange}
+                placeholder="Treatment"
+                required
+              />
+              <input
+                type="date"
+                name="date"
+                value={newData.date}
+                onChange={handleAddChange}
+                min={today}
+                required
+              />
+              <input
+                type="text"
+                name="aesthetician"
+                value={newData.aesthetician}
+                onChange={handleAddChange}
+                placeholder="Aesthetician"
+                required
+              />
+              <div className="modal-actions">
+                <button type="button" onClick={() => setAddModalOpen(false)}>Cancel</button>
+                <button type="submit">Add</button>
+              </div>
+            </form>
           </div>
         </div>
       )}
