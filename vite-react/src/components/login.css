@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: flex-start; /* Align card to the left */
+  align-items: center;
+  padding-left: 5%; /* Space from left edge */
+  overflow: hidden; 
+}
+
+.card-container {
+  position: relative;
+  width: 260px;
+  height: 360px;
+  perspective: 1000px;
+}
+
+.card-side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.8s;
+}
+
+.front {
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.card-container.flipped .front {
+  transform: rotateY(-180deg);
+}
+
+.card-container.flipped .back {
+  transform: rotateY(0deg);
+}
+
+.card-side .login-box {
+  width: 100%;
+  height: 100%;
+  padding: 25px 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: -8px 0 25px rgba(255, 182, 193, 0.4),
+              0 8px 25px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #e57373;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 12px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 0.85rem;
+}
+
+button {
+  padding: 10px;
+  background-color: #f48fb1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+button:hover {
+  background-color: #ec407a;
+}
+
+.forgot {
+  font-size: 0.8rem;
+  color: #e57373;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.register {
+  font-size: 0.75rem;
+  text-align: center;
+  color: #666;
+}
+
+.register a {
+  color: #e57373;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.success-message,
+.error-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 25px;
+  font-size: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.success-message {
+  background-color: #4caf50;
+}
+
+.error-message {
+  background-color: #f44336;
+}
